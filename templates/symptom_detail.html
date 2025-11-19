@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Детали признака: {{ .symptom.Title }}</title>
+    <link rel="stylesheet" href="/static/styles/symptom_detail_style.css">
+</head>
+<body>
+    <header>
+        <a href="/" class="home-button">Домой</a>
+        <h1>ОЦЕНКА ДЕГИДРАТАЦИИ</h1>
+    </header>
+
+    <div class="symptom-details">
+        <h2>Детали признака: {{ .symptom.Title }}</h2>
+        
+        <div class="details-content">
+            <div class="info">
+                <h3>Описание и классификация:</h3>
+                <ul>
+                    <li>{{ .symptom.Title }}</li>
+                    <li>Категория: {{ .symptom.Category }}</li>
+                    <li>{{ .symptom.Description }}</li>
+                </ul>
+
+                <h3>Параметры оценки:</h3>
+                <ul>
+                    <li>Степень тяжести: {{ .symptom.Severity }}</li>
+                    <li>Потеря веса: {{ .symptom.WeightLoss }}</li>
+                    <li>Потребность в жидкости: {{ .symptom.FluidNeed }}</li>
+                    <li>Время восстановления: {{ .symptom.RecoveryTime }}</li>
+                </ul>
+            </div>
+
+            <div class="symptom-image">
+                <img src="http://127.0.0.1:9000/img/{{ .symptom.ImageURL }}" alt="{{ .symptom.Title }}">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

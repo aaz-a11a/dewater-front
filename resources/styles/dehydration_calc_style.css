@@ -1,0 +1,204 @@
+body {
+    background-color: #f5f5f5;
+    color: #000;
+    font-family: 'Inter', 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.4;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    padding: 10px 20px;
+    background-color: #1BB193;
+    color: #fff;
+}
+
+header h1 {
+    color: #fff;
+    font-size: 20px;
+    margin: 0;
+    font-weight: bold;
+}
+
+.home-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.calculation-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+h2 {
+    color: #1BB193;
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: bold;
+}
+
+/* Сводка заявки и панель расчёта сверху */
+.request-summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+.request-fields, .calc-panel {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+}
+.request-fields .label { color: #666; font-weight: 600; margin-right: 6px; }
+.request-fields .value { color: #222; }
+
+/* Комментарий врача */
+.comment-section {
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 30px;
+}
+
+.comment-section label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+.comment-section textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: inherit;
+    resize: vertical;
+    min-height: 60px;
+    box-sizing: border-box;
+}
+
+/* Таблица симптомов */
+.symptoms-table-wrapper { background:#fff; border:1px solid #ddd; border-radius:8px; padding: 12px; }
+.symptoms-table { width:100%; border-collapse: collapse; }
+.symptoms-table thead th { text-align:left; padding:10px; background:#f0f4f4; color:#0e6b5b; font-size:14px; }
+.symptoms-table tbody td { padding:24px; border-top:1px solid #eee; vertical-align: top; }
+.symptom-cell { display:flex; gap:10px; align-items:flex-start; }
+.symptom-thumb { width:160px; height:160px; object-fit:cover; border-radius:8px; border:1px solid #e5e5e5; }
+.symptom-name .title { font-weight: 600; color:#222; }
+.symptom-name .desc { font-size:14px; color:#777; margin-top:8px; max-width: 700px; }
+
+/* Секция расчета */
+.calculation-section {
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    padding: 20px;
+}
+
+.weight-input {
+    margin-bottom: 15px;
+}
+
+.weight-input label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+.weight-input input {
+    width: 200px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.result-box {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.result-title {
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.result-value {
+    color: #1BB193;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .calculation-container {
+        padding: 10px;
+    }
+    .request-summary { grid-template-columns: 1fr; }
+    
+    header {
+        padding: 6px 10px;
+    }
+}
+
+.home-button {
+    background: white;
+    color: #1BB193;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    border: 2px solid white;
+}
+
+/* Кнопка удаления симптома */
+.remove-form {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.btn-remove-symptom {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-remove-symptom:hover {
+    background: #c82333;
+}
+
+.btn-delete-request {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-delete-request:hover {
+    background: #c82333;
+}

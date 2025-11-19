@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Оценка дегидратации</title>
+    <link rel="stylesheet" href="/static/styles/symptoms_style.css">
+</head>
+<body>
+    <header>
+        <h1>ОЦЕНКА ДЕГИДРАТАЦИИ</h1>
+    </header>
+    <div class="search-container">
+        <form action="/">
+            <input type="text" name="query" placeholder="Поиск:" value="{{ .query }}">
+            <button type="submit">Найти</button>
+        </form>
+    </div>
+    <h2 class="catalog-title">Клинические признаки</h2>
+    <p class="catalog-subtitle">Оцените степень обезвоживания пациента по клиническим признакам</p>
+    
+    <div class="symptoms-grid">
+        {{ range .symptoms }}
+        <div class="symptom-card">
+            <img src="http://127.0.0.1:9000/img/{{ .ImageURL }}" alt="{{ .Title }}">
+            <h2>{{ .Title }}</h2>
+            <p>Степень: {{ .Severity }}</p>
+            <p>Потеря веса: {{ .WeightLoss }}</p>
+            <div class="card-buttons">
+                <a href="/symptom/{{ .ID }}"><button class="btn-details">Подробнее</button></a>
+                <form action="/add-symptom/{{ .ID }}" method="POST" class="add-form">
+                    <button type="submit" class="btn-add">Добавить в расчет</button>
+                </form>
+            </div>
+        </div>
+        {{ end }}
+    </div>
+    
+    <a href="/dehydration-calc" class="calculation-icon">
+        <img src="https://w7.pngwing.com/pngs/465/153/png-transparent-black-and-white-circle-monochrome-graphy-triangle-line-art-droplet-angle-white-text.png" alt="Калькулятор">
+        {{ if gt .calculationCount 0 }}
+        <span class="calculation-notification">{{ .calculationCount }}</span>
+        {{ end }}
+    </a>
+</body>
+</html>

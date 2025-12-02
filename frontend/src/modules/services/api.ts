@@ -29,21 +29,52 @@ async function safeFetch<T>(input: RequestInfo, init?: RequestInit, fallback?: (
   }
 }
 
+const API_BASE = (import.meta as any).env?.VITE_API_BASE || ''
+const USE_MOCK = ((import.meta as any).env?.VITE_USE_MOCK || '').toString().toLowerCase() === 'true'
+
+function buildUrl(path: string) {
+  if (!API_BASE) return path // dev: используем proxy
+  return API_BASE.replace(/\/$/, '') + path
+}
+
+function filterMock(list: Symptom[], params: { title?: string; active?: boolean }) {
+  const q = (params.title || '').trim().toLowerCase()
+  return list.filter(x => {
+    const matchTitle = q ? ((x.title || '').toLowerCase().includes(q) || (x.description || '').toLowerCase().includes(q)) : true
+    const matchActive = typeof params.active === 'boolean' ? x.is_active === params.active : true
+    return matchTitle && matchActive
+  })
+}
+
 export async function listSymptoms(params: { title?: string; active?: boolean } = {}): Promise<ApiListResponse<Symptom[]>> {
   const search = new URLSearchParams()
   if (params.title) search.set('title', params.title)
   if (typeof params.active === 'boolean') search.set('active', String(params.active))
-  const url = `/api/symptoms?${search.toString()}`
+  const path = `/api/symptoms?${search.toString()}`
+  const url = buildUrl(path)
+
+  if (USE_MOCK) {
+    const data = filterMock(mockSymptoms, params)
+    return { data, total: data.length, filters: Object.fromEntries(search.entries()) }
+  }
 
   return safeFetch<ApiListResponse<Symptom[]>>(
     url,
     { headers: { 'Accept': 'application/json' } },
-    async () => ({ data: mockSymptoms, total: mockSymptoms.length, filters: Object.fromEntries(search.entries()) })
+    async () => {
+      const data = filterMock(mockSymptoms, params)
+      return { data, total: data.length, filters: Object.fromEntries(search.entries()) }
+    }
   )
 }
 
 export async function getSymptom(id: number): Promise<ApiListResponse<{ symptom: Symptom; public_image_url?: string }>> {
-  const url = `/api/symptoms/${id}`
+  const url = buildUrl(`/api/symptoms/${id}`)
+  if (USE_MOCK) {
+    const s = mockSymptoms.find(x => x.id === id)
+    if (!s) throw new Error('not found')
+    return { data: { symptom: s, public_image_url: s.public_image_url }, total: 1, filters: { id } }
+  }
   return safeFetch<ApiListResponse<{ symptom: Symptom; public_image_url?: string }>>(
     url,
     { headers: { 'Accept': 'application/json' } },

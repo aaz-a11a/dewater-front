@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"strings"
 
-	"dehydrotationlab4/internal/app/ds"
+	"dehydrotationlab6/internal/app/ds"
 
 	"github.com/gin-gonic/gin"
 )

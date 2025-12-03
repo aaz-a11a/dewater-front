@@ -3,14 +3,14 @@ package main
 import (
 	"fmt"
 
-	_ "dehydrotationlab4/docs" // Swagger docs
-	"dehydrotationlab4/internal/app/config"
-	"dehydrotationlab4/internal/app/dsn"
-	"dehydrotationlab4/internal/app/handler"
-	"dehydrotationlab4/internal/app/pkg/auth"
-	"dehydrotationlab4/internal/app/pkg/storage"
-	"dehydrotationlab4/internal/app/repository"
-	"dehydrotationlab4/internal/pkg"
+	_ "dehydrotationlab6/docs" // Swagger docs
+	"dehydrotationlab6/internal/app/config"
+	"dehydrotationlab6/internal/app/dsn"
+	"dehydrotationlab6/internal/app/handler"
+	"dehydrotationlab6/internal/app/pkg/auth"
+	"dehydrotationlab6/internal/app/pkg/storage"
+	"dehydrotationlab6/internal/app/repository"
+	"dehydrotationlab6/internal/pkg"
 
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"

@@ -1,27 +1,24 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
-import filtersReducer, { FiltersState } from './filtersSlice'
+import filtersReducer, { FiltersState, hydrate } from './filtersSlice'
 
 const PERSIST_KEY = 'app:filters'
-
-function loadPreloaded(): { filters?: FiltersState } | undefined {
-  try {
-    const raw = localStorage.getItem(PERSIST_KEY)
-    if (!raw) return undefined
-    const parsed = JSON.parse(raw)
-    return { filters: parsed as FiltersState }
-  } catch {
-    return undefined
-  }
-}
 
 export const store = configureStore({
   reducer: {
     filters: filtersReducer,
   },
-  preloadedState: loadPreloaded(),
   devTools: true,
 })
+
+// Инициализация из localStorage после создания стора
+try {
+  const raw = localStorage.getItem(PERSIST_KEY)
+  if (raw) {
+    const parsed = JSON.parse(raw) as FiltersState
+    store.dispatch(hydrate(parsed))
+  }
+} catch {}
 
 store.subscribe(() => {
   try {

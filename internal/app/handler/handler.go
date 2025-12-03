@@ -1,10 +1,10 @@
 package handler
 
 import (
-	"dehydrotationlab4/internal/app/config"
-	"dehydrotationlab4/internal/app/middleware"
-	"dehydrotationlab4/internal/app/pkg/auth"
-	"dehydrotationlab4/internal/app/repository"
+	"dehydrotationlab6/internal/app/config"
+	"dehydrotationlab6/internal/app/middleware"
+	"dehydrotationlab6/internal/app/pkg/auth"
+	"dehydrotationlab6/internal/app/repository"
 	"fmt"
 	"sync"
 

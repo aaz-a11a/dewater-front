@@ -3,9 +3,9 @@ package handler
 import (
 	"net/http"
 
-	"dehydrotationlab4/internal/app/ds"
-	"dehydrotationlab4/internal/app/middleware"
-	"dehydrotationlab4/internal/app/pkg/auth"
+	"dehydrotationlab6/internal/app/ds"
+	"dehydrotationlab6/internal/app/middleware"
+	"dehydrotationlab6/internal/app/pkg/auth"
 
 	"github.com/gin-gonic/gin"
 	"github.com/google/uuid"

@@ -1,4 +1,4 @@
-module dehydrotationlab4
+module dehydrotationlab6
 
 go 1.24.0
 

@@ -5,8 +5,8 @@ import (
 	"strconv"
 	"time"
 
-	"dehydrotationlab4/internal/app/ds"
-	"dehydrotationlab4/internal/app/middleware"
+	"dehydrotationlab6/internal/app/ds"
+	"dehydrotationlab6/internal/app/middleware"
 
 	"github.com/gin-gonic/gin"
 )

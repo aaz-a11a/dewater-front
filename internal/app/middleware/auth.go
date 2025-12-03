@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"strings"
 
-	"dehydrotationlab4/internal/app/pkg/auth"
+	"dehydrotationlab6/internal/app/pkg/auth"
 
 	"github.com/gin-gonic/gin"
 )

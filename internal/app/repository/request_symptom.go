@@ -1,6 +1,6 @@
 package repository
 
-import "dehydrotationlab4/internal/app/ds"
+import "dehydrotationlab6/internal/app/ds"
 
 func (r *Repository) DeleteRequestSymptom(requestID, symptomID uint) error {
 	return r.db.Where("request_id = ? AND symptom_id = ?", requestID, symptomID).Delete(&ds.RequestSymptom{}).Error

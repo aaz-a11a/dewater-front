@@ -3,8 +3,8 @@ package pkg
 import (
 	"fmt"
 
-	"dehydrotationlab4/internal/app/config"
-	"dehydrotationlab4/internal/app/handler"
+	"dehydrotationlab6/internal/app/config"
+	"dehydrotationlab6/internal/app/handler"
 
 	"github.com/gin-gonic/gin"
 	"github.com/sirupsen/logrus"

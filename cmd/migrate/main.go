@@ -1,8 +1,8 @@
 package main
 
 import (
-	"dehydrotationlab4/internal/app/ds"
-	"dehydrotationlab4/internal/app/dsn"
+	"dehydrotationlab6/internal/app/ds"
+	"dehydrotationlab6/internal/app/dsn"
 
 	"github.com/joho/godotenv"
 	"gorm.io/driver/postgres"

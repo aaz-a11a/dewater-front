@@ -3,7 +3,7 @@ package handler
 import (
 	"net/http"
 
-	"dehydrotationlab4/internal/app/middleware"
+	"dehydrotationlab6/internal/app/middleware"
 
 	"github.com/gin-gonic/gin"
 )
